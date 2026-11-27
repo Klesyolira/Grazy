@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e5007d">
+  <meta name="description" content="Oba Oba Variedades em Ananás, Tocantins: impressões coloridas e P&B, cópias, fotos, quadros personalizados e muito mais.">
+  <meta property="og:title" content="Oba Oba Variedades — Ananás, TO">
+  <meta property="og:description" content="Impressão, cópias, fotos e muito mais. Fale com a Oba Oba pelo WhatsApp ou Instagram.">
+  <title>Oba Oba Variedades | Ananás - TO</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --pink: #e5007d;
+      --pink-dark: #990052;
+      --pink-soft: #fff0f8;
+      --yellow: #ffd51b;
+      --ink: #291522;
+      --muted: #705b69;
+      --white: #fff;
+      --shadow: 0 18px 50px rgba(103, 13, 64, .12);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff9fc;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 36px)); margin-inline: auto; }
+    .topline { height: 8px; background: linear-gradient(90deg, var(--pink), #b70064 66%, var(--yellow)); }
+    header { padding: 22px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { text-decoration: none; display: inline-flex; flex-direction: column; line-height: 1; }
+    .brand-main { color: var(--pink); font-weight: 950; font-size: 25px; letter-spacing: -1.2px; text-shadow: 1px 2px 0 var(--yellow); }
+    .brand-sub { margin-top: 5px; color: var(--pink-dark); font-size: 10px; font-weight: 900; letter-spacing: 3px; }
+    .nav-link { color: var(--pink-dark); font-size: 14px; font-weight: 750; text-decoration: none; }
+    .nav-link:hover, .text-link:hover { text-decoration: underline; }
+    .hero { padding: 26px 0 42px; }
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 36px;
+      align-items: center;
+      padding: clamp(26px, 6vw, 68px);
+      border-radius: 32px;
+      background: linear-gradient(135deg, #fff 0%, #fff6fb 54%, #ffe1f1 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid #f9d0e5;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      right: -125px;
+      top: -145px;
+      border: 42px solid rgba(229, 0, 125, .07);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 16px; color: var(--pink-dark); font-size: 12px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: var(--yellow); }
+    h1 { max-width: 650px; margin: 0; font-size: clamp(42px, 7vw, 76px); letter-spacing: -3px; line-height: .98; }
+    h1 .highlight { color: var(--pink); text-shadow: 2px 3px 0 var(--yellow); }
+    .intro { max-width: 560px; margin: 22px 0 26px; color: var(--muted); font-size: clamp(16px, 2vw, 19px); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 18px; border: 0; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 850; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(72, 9, 47, .16); }
+    .button-primary { color: #fff; background: var(--pink); box-shadow: 0 8px 18px rgba(229, 0, 125, .22); }
+    .button-secondary { color: var(--pink-dark); background: #fff; border: 1px solid #edb9d5; }
+    .button-dark { color: #fff; background: #33212e; }
+    .icon { width: 19px; height: 19px; flex: 0 0 19px; }
+    .hero-stamp {
+      position: relative;
+      z-index: 1;
+      min-height: 270px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, var(--pink), #a8005b);
+      color: white;
+      text-align: center;
+      box-shadow: 0 18px 34px rgba(166, 0, 89, .2);
+      transform: rotate(2deg);
+    }
+    .hero-stamp::before { content: ""; position: absolute; inset: 11px; border: 1px solid rgba(255,255,255,.4); border-radius: 22px; }
+    .stamp-inner { position: relative; z-index: 1; }
+    .stamp-spark { color: var(--yellow); font-size: 30px; line-height: 1; }
+    .stamp-big { margin: 9px 0 0; font-size: clamp(34px, 4vw, 48px); font-weight: 950; letter-spacing: -2px; line-height: .95; text-shadow: 2px 3px 0 rgba(65,0,39,.45); }
+    .stamp-label { margin: 12px 0 0; color: #ffe76e; font-size: 12px; font-weight: 900; letter-spacing: 4px; }
+    .stamp-note { margin: 17px 0 0; font-size: 14px; font-weight: 700; }
+    section { padding: 42px 0; }
+    .section-head { max-width: 660px; margin: 0 auto 26px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    h2 { margin: 0; font-size: clamp(29px, 4vw, 42px); letter-spacing: -1.2px; line-height: 1.08; }
+    .section-copy { margin: 12px 0 0; color: var(--muted); }
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service { min-height: 156px; padding: 23px; border: 1px solid #f5c9df; border-radius: 20px; background: #fff; box-shadow: 0 8px 22px rgba(103, 13, 64, .05); }
+    .service-mark { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 15px; border-radius: 14px; color: var(--pink-dark); background: var(--pink-soft); font-size: 20px; font-weight: 900; }
+    .service h3 { margin: 0 0 7px; font-size: 18px; }
+    .service p { margin: 0; color: var(--muted); font-size: 14px; }
+    .contact { padding-bottom: 58px; }
+    .contact-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: clamp(24px, 5vw, 42px); border-radius: var(--radius); background: #fff; border: 1px solid #f4c4dd; box-shadow: var(--shadow); }
+    .contact-panel h2 { margin-bottom: 12px; }
+    .contact-panel p { color: var(--muted); }
+    .details { display: grid; gap: 12px; }
+    .detail { display: flex; align-items: flex-start; gap: 13px; padding: 14px; border-radius: 16px; background: #fff5fa; }
+    .detail .service-mark { width: 38px; height: 38px; min-width: 38px; margin: 0; border-radius: 12px; }
+    .detail strong { display: block; margin-bottom: 2px; }
+    .detail span, .detail a { color: var(--muted); font-size: 14px; }
+    .text-link { color: var(--pink-dark) !important; font-weight: 800; text-decoration-color: #e9a9cc; text-underline-offset: 3px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    footer { padding: 22px 0 30px; border-top: 1px solid #f5d5e5; color: var(--muted); font-size: 12px; text-align: center; }
+    footer strong { color: var(--pink-dark); }
+    @media (max-width: 760px) {
+      .hero { padding-top: 10px; }
+      .hero-card { grid-template-columns: 1fr; gap: 25px; padding: 30px 24px; }
+      .hero-stamp { min-height: 210px; transform: none; }
+      .services { grid-template-columns: 1fr 1fr; }
+      .contact-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(100% - 26px, 1120px); }
+      header { padding: 17px 0; }
+      .nav-link { font-size: 12px; }
+      .brand-main { font-size: 22px; }
+      h1 { letter-spacing: -2px; }
+      .actions .button { width: 100%; }
+      .services { grid-template-columns: 1fr; }
+      section { padding: 32px 0; }
+      .contact-actions .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
+  </style>
+</head>
+<body>
+  <div class="topline" aria-hidden="true"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Oba Oba Variedades, início">
+        <span class="brand-main">Oba Oba</span>
+        <span class="brand-sub">VARIEDADES</span>
+      </a>
+      <a class="nav-link" href="#contato">Fale com a gente ↓</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-card">
+        <div>
+          <p class="eyebrow">Qualidade e praticidade em um só lugar</p>
+          <h1>Impressão<br>e muito <span class="highlight">mais!</span></h1>
+          <p class="intro">Na Oba Oba Variedades você encontra serviços de impressão, cópias, fotos e muito mais. Estamos em Ananás, Tocantins — vai ser um prazer atender você!</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://wa.me/5563992958901?text=Ol%C3%A1%2C%20Oba%20Oba!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener noreferrer" aria-label="Chamar a Oba Oba no WhatsApp">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.8a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c.2-.5.5-.5.8-.5h.4c.2 0 .3.1.4.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.2.3.4 0 .3-.2 1.1-.6 1.4-.4.4-1 .5-1.6.4-1-.2-2.3-.8-3.5-1.9-1.2-1.1-2-2.5-2.2-3.4-.2-.8.2-1.5.7-1.9Z" fill="currentColor"/></svg>
+              Pedir informações
+            </a>
+            <a class="button button-secondary" href="https://www.instagram.com/obaoba.variedades/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6.5" r="1.2" fill="currentColor"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+        <div class="hero-stamp" aria-label="Oba Oba Variedades, impressão e muito mais">
+          <div class="stamp-inner">
+            <div class="stamp-spark" aria-hidden="true">✦</div>
+            <p class="stamp-big">Oba Oba</p>
+            <p class="stamp-label">VARIEDADES</p>
+            <p class="stamp-note">Tudo isso e muito mais,<br>aqui pertinho de você!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">O que fazemos</p>
+          <h2>Seu dia fica mais fácil por aqui</h2>
+          <p class="section-copy">Precisa imprimir, copiar ou preparar uma lembrança especial? Conte com a gente.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <div class="service-mark" aria-hidden="true">▣</div>
+            <h3>Impressões e cópias</h3>
+            <p>Impressões coloridas e em preto e branco, além de cópias para o seu dia a dia.</p>
+          </article>
+          <article class="service">
+            <div class="service-mark" aria-hidden="true">▧</div>
+            <h3>Fotos do seu jeito</h3>
+            <p>Revelação de fotos, foto 3×4 e outros tamanhos para guardar momentos especiais.</p>
+          </article>
+          <article class="service">
+            <div class="service-mark" aria-hidden="true">♡</div>
+            <h3>Quadros personalizados</h3>
+            <p>Uma forma especial de decorar, presentear e deixar suas memórias à vista.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="wrap contact-panel">
+        <div>
+          <p class="eyebrow">Estamos pertinho</p>
+          <h2>Venha conferir!</h2>
+          <p>Ficou com alguma dúvida sobre um serviço? Chame a gente para consultar valores, tamanhos e disponibilidade.</p>
+          <div class="contact-actions">
+            <a class="button button-primary" href="https://wa.me/5563992958901?text=Ol%C3%A1%2C%20Oba%20Oba!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener noreferrer">Conversar no WhatsApp</a>
+            <a class="button button-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Avenida%20Betel%2C%20306%2C%20Anan%C3%A1s%2C%20TO%2C%2077890-000" target="_blank" rel="noopener noreferrer">Como chegar</a>
+          </div>
+        </div>
+        <div class="details">
+          <div class="detail">
+            <div class="service-mark" aria-hidden="true">⌖</div>
+            <div><strong>Endereço</strong><span>Avenida Betel, nº 306<br>Ananás – TO · CEP 77890-000</span></div>
+          </div>
+          <div class="detail">
+            <div class="service-mark" aria-hidden="true">☎</div>
+            <div><strong>WhatsApp</strong><a class="text-link" href="https://wa.me/5563992958901" target="_blank" rel="noopener noreferrer">(63) 99295-8901</a></div>
+          </div>
+          <div class="detail">
+            <div class="service-mark" aria-hidden="true">◎</div>
+            <div><strong>Instagram</strong><a class="text-link" href="https://www.instagram.com/obaoba.variedades/" target="_blank" rel="noopener noreferrer">@obaoba.variedades</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><strong>Oba Oba Variedades</strong> · Ananás, Tocantins<br>Qualidade e praticidade em um só lugar.</div>
+  </footer>
+</body>
+</html>
