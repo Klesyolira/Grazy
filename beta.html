@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Lixo Consciente | Sustentabilidade e Reciclagem de Eletroeletrônicos</title>
+  <meta name="description" content="Site educativo sobre descarte correto de lixo eletrônico, impactos ambientais e pontos de coleta em Araguaína-TO.">
+  <style>
+    :root {
+      --bg: #0f1419;
+      --bg-card: #1a2332;
+      --bg-soft: #151c27;
+      --text: #e8edf5;
+      --text-muted: #94a3b8;
+      --primary: #22c55e;
+      --primary-dim: #16a34a;
+      --cyan: #22d3ee;
+      --border: #2d3a4f;
+      --white: #f8fafc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(15, 20, 25, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .logo span { color: var(--cyan); }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(34, 197, 94, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+        var(--bg);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      max-width: 800px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.6rem;
+      min-width: 140px;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+    .stat span { font-size: 0.85rem; color: var(--text-muted); }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #052e16;
+    }
+    .btn-primary:hover { background: var(--primary-dim); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* SECTIONS */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    .section-title span { color: var(--primary); }
+    .section-sub {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+
+    /* CARDS */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--primary); }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      color: var(--cyan);
+    }
+    .card p, .card ul { color: var(--text-muted); font-size: 0.95rem; }
+    .card ul { padding-left: 1.1rem; margin-top: 0.5rem; }
+    .card li { margin-bottom: 0.3rem; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.7rem;
+    }
+
+    /* POINTS */
+    .point-list { list-style: none; }
+    .point-list li {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .point-list .icon {
+      font-size: 1.4rem;
+      margin-top: 0.1rem;
+    }
+
+    /* FORM */
+    .form-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .form-box a {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .hero-stats { gap: 1rem; }
+      .stat { min-width: 120px; padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#inicio" class="logo">♻️ E-Lixo <span>Consciente</span></a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#o-que-e">O que é</a></li>
+      <li><a href="#impactos">Impactos</a></li>
+      <li><a href="#descarte">Descarte</a></li>
+      <li><a href="#circular">Economia Circular</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- PÁGINA 1: INÍCIO -->
+<section id="inicio" class="hero">
+  <h1>Seu eletrônico velho <span>não é lixo</span>.<br>É recurso.</h1>
+  <p>Site educativo sobre descarte correto de resíduos eletroeletrônicos (REEE). Conscientização + soluções práticas para Araguaína e região.</p>
+  
+  <div class="hero-stats">
+    <div class="stat">
+      <strong>\~2,4 mi</strong>
+      <span>toneladas/ano no Brasil</span>
+    </div>
+    <div class="stat">
+      <strong>&lt; 3%</strong>
+      <span>reciclados formalmente</span>
+    </div>
+    <div class="stat">
+      <strong>15+ ton</strong>
+      <span>já coletadas em Araguaína</span>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <a href="#descarte" class="btn btn-primary">Onde descartar</a>
+    <a href="#o-que-e" class="btn btn-outline">Entender o problema</a>
+  </div>
+</section>
+
+<!-- PÁGINA 2: O QUE É -->
+<section id="o-que-e">
+  <h2 class="section-title">O que é <span>Lixo Eletrônico</span>?</h2>
+  <p class="section-sub">Resíduos de Equipamentos Eletroeletrônicos (REEE) são todos os aparelhos elétricos ou eletrônicos que chegaram ao fim da vida útil.</p>
+
+  <div class="grid-4">
+    <div class="card">
+      <span class="badge">Linha Branca</span>
+      <h3>Grande porte</h3>
+      <ul>
+        <li>Geladeiras</li>
+        <li>Fogões</li>
+        <li>Máquinas de lavar</li>
+        <li>Ar-condicionado</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge">Linha Marrom</span>
+      <h3>Áudio e vídeo</h3>
+      <ul>
+        <li>TVs e monitores</li>
+        <li>Aparelhos de som</li>
+        <li>DVDs / home theater</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge">Linha Azul</span>
+      <h3>Eletroportáteis</h3>
+      <ul>
+        <li>Batedeiras</li>
+        <li>Liquidificadores</li>
+        <li>Secadores de cabelo</li>
+        <li>Ferros de passar</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge">Linha Verde</span>
+      <h3>TI e telecom</h3>
+      <ul>
+        <li>Computadores e notebooks</li>
+        <li>Celulares e tablets</li>
+        <li>Cabos, carregadores</li>
+        <li>Baterias e pilhas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PÁGINA 3: IMPACTOS -->
+<section id="impactos">
+  <h2 class="section-title">Impactos <span>Ambientais e na Saúde</span></h2>
+  <p class="section-sub">Quando descartados no lixo comum, os componentes tóxicos vazam para o solo e a água.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Substâncias tóxicas</h3>
+      <ul>
+        <li><strong>Chumbo</strong> – dano neurológico, especialmente em crianças</li>
+        <li><strong>Mercúrio</strong> – afeta sistema nervoso e rins</li>
+        <li><strong>Cádmio</strong> – câncer e problemas ósseos</li>
+        <li><strong>Lítio</strong> – risco de incêndio e contaminação</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Consequências</h3>
+      <ul>
+        <li>Contaminação do solo e lençóis freáticos</li>
+        <li>Entrada de metais pesados na cadeia alimentar</li>
+        <li>Riscos à saúde humana (neurológicos, respiratórios)</li>
+        <li>Perda de biodiversidade em áreas afetadas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PÁGINA 4: DESCARTE -->
+<section id="descarte">
+  <h2 class="section-title">Guia Prático de <span>Descarte e Coleta</span></h2>
+  <p class="section-sub">Como preparar e onde levar em Araguaína.</p>
+
+  <div class="grid-2" style="margin-bottom: 2.5rem;">
+    <div class="card">
+      <h3>Como preparar o aparelho</h3>
+      <ul>
+        <li>Faça backup dos dados importantes</li>
+        <li>Apague dados pessoais (reset de fábrica)</li>
+        <li>Remova pilhas e baterias (descarte separado se possível)</li>
+        <li>Não desmonte o equipamento</li>
+        <li>Embale de forma segura se for grande</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Logística Reversa</h3>
+      <p>É a obrigação legal (PNRS – Lei 12.305/2010) de fabricantes, importadores e comerciantes de recolher e dar destinação correta aos produtos após o uso. O consumidor também tem responsabilidade: entregar nos pontos oficiais.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom: 1rem; color: var(--white);">Pontos de coleta em Araguaína</h3>
+  <ul class="point-list">
+    <li>
+      <span class="icon">📍</span>
+      <div>
+        <strong>MetalSul (ponto fixo principal)</strong><br>
+        Rua Aquarela Musical, 153 – Parque dos Sonhos Dourados<br>
+        <small style="color: var(--text-muted);">Recebe eletrônicos e eletrodomésticos de todos os portes. Gratuito.</small>
+      </div>
+    </li>
+    <li>
+      <span class="icon">📍</span>
+      <div>
+        <strong>UNITPAC – Campus</strong><br>
+        Espaço entre blocos G e F<br>
+        <small style="color: var(--text-muted);">Itens de pequeno porte (notebooks, monitores, celulares, etc.).</small>
+      </div>
+    </li>
+    <li>
+      <span class="icon">📍</span>
+      <div>
+        <strong>Campanhas e mutirões</strong><br>
+        Via Lago, Parque Cimba, Centro de Convenções e escolas<br>
+        <small style="color: var(--text-muted);">Acompanhe a Prefeitura e ABREE. Já foram coletadas mais de 15 toneladas em ações recentes.</small>
+      </div>
+    </li>
+    <li>
+      <span class="icon">🔋</span>
+      <div>
+        <strong>Pilhas e baterias</strong><br>
+        Vários pontos (Atacadão, Secretaria da Fazenda, FACIT, Senai, etc.)<br>
+        <small style="color: var(--text-muted);">Consulte o localizador da Green Eletron ou da Prefeitura.</small>
+      </div>
+    </li>
+  </ul>
+  <p style="margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-muted);">
+    Fontes: Prefeitura de Araguaína, ABREE e Green Eletron. Sempre confirme funcionamento antes de ir.
+  </p>
+</section>
+
+<!-- PÁGINA 5: ECONOMIA CIRCULAR -->
+<section id="circular">
+  <h2 class="section-title">Sustentabilidade e <span>Economia Circular</span></h2>
+  <p class="section-sub">Reciclar é importante, mas não é a única solução.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Além da reciclagem</h3>
+      <ul>
+        <li><strong>Manutenção e conserto</strong> – prolongue a vida útil</li>
+        <li><strong>Doação</strong> – se ainda funciona</li>
+        <li><strong>Venda de usados</strong> – mercado de segunda mão</li>
+        <li><strong>Compra consciente</strong> – escolha produtos duráveis e reparáveis</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Mineração Urbana</h3>
+      <p>Recuperação de metais preciosos (ouro, prata, cobre, terras raras) das placas eletrônicas. 1 grama de ouro pode sair de \~40 celulares reciclados, em vez de 1 tonelada de minério. É mais eficiente e menos destrutivo que a mineração tradicional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PÁGINA 6: SOBRE -->
+<section id="sobre">
+  <h2 class="section-title">Sobre Nós e <span>Contato</span></h2>
+  
+  <div class="grid-2" style="margin-bottom: 2rem;">
+    <div class="card">
+      <h3>Apresentação da equipe</h3>
+      <p>Trabalho escolar desenvolvido pelo 3º ano C, sala 33.03, do Centro de Ensino Médio Cabo Aparício Araújo Paz, com o objetivo de conscientizar a comunidade escolar e local sobre o descarte correto de resíduos eletroeletrônicos.</p>
+      <p style="margin-top: 0.8rem; color: var(--text-muted); font-size: 0.9rem;">
+        <strong>Integrantes:</strong> Grazielly Silva Alves, Dilane Maria Alves, Maria Eduarda Lopes e Ana Júlia da Silva.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Referências principais</h3>
+      <ul>
+        <li>Política Nacional de Resíduos Sólidos (Lei 12.305/2010)</li>
+        <li>ABREE – Associação Brasileira de Reciclagem de Eletroeletrônicos</li>
+        <li>Green Eletron</li>
+        <li>Prefeitura de Araguaína – Secretaria de Meio Ambiente</li>
+        <li>Global E-waste Monitor</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <h3 style="margin-bottom: 0.8rem;">Tem dúvida ou conhece outro ponto de coleta?</h3>
+    <p style="color: var(--text-muted); margin-bottom: 1.2rem;">Envie sua dúvida, sugestão ou indicação de ponto de coleta pelo formulário da equipe.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSceQ1DutxTHGeGLDedHM66_1ShtRDHCFK9MbJEmPCiJK86THQ/viewform?usp=preview" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      Abrir formulário
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Projeto escolar • Araguaína - TO • 2026</p>
+  <p style="margin-top: 0.5rem;">Conteúdo original. Fontes oficiais citadas. Site hospedado no GitHub Pages.</p>
+</footer>
+
+<script>
+  // Fecha menu mobile ao clicar em link
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
