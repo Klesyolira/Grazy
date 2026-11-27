@@ -1,265 +1,223 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Lixo Consciente | Sustentabilidade e Reciclagem de Eletroeletrônicos</title>
-  <meta name="description" content="Site educativo sobre descarte correto de lixo eletrônico, impactos ambientais e pontos de coleta em Araguaína-TO.">
-  <style>
-    :root {
-      --bg: #0f1419;
-      --bg-card: #1a2332;
-      --bg-soft: #151c27;
-      --text: #e8edf5;
-      --text-muted: #94a3b8;
-      --primary: #22c55e;
-      --primary-dim: #16a34a;
-      --cyan: #22d3ee;
-      --border: #2d3a4f;
-      --white: #f8fafc;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Lixo Consciente | Sustentabilidade e Reciclagem de Eletroeletrônicos</title>
+<meta name="description" content="Site educativo sobre descarte correto de lixo eletrônico, impactos ambientais e pontos de coleta em Araguaína-TO.">
+<meta name="theme-color" content="#0b1118">
+<style>
+:root{
+  --bg:#0b1118; --bg2:#101823; --card:rgba(255,255,255,.04); --card-b:rgba(255,255,255,.09);
+  --text:#e9eef6; --muted:#9aa9bd;
+  --green:#34d399; --green2:#10b981; --cyan:#22d3ee; --blue:#60a5fa; --amber:#fbbf24; --red:#f87171;
+  --grad:linear-gradient(135deg,#34d399,#22d3ee);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+img,svg,iframe{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.25rem}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+/* progress */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:200}
 
-    /* NAV */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(15, 20, 25, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-    nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.9rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .logo span { color: var(--cyan); }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.92rem;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--primary); }
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,17,24,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--card-b)}
+nav{max-width:1120px;margin:0 auto;padding:.8rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:1.1rem;text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--grad);color:#04241a;font-size:1.1rem}
+.logo b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:.3rem;list-style:none}
+.nav-links a{display:block;padding:.45rem .85rem;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text);background:var(--card)}
+.nav-links a.active{color:#04241a;background:var(--green);font-weight:600}
+.menu-btn{display:none;background:var(--card);border:1px solid var(--card-b);color:var(--text);font-size:1.3rem;width:42px;height:42px;border-radius:12px;cursor:pointer}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 6rem 1.5rem 4rem;
-      background: 
-        radial-gradient(ellipse at 30% 20%, rgba(34, 197, 94, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
-        var(--bg);
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      max-width: 800px;
-    }
-    .hero h1 span { color: var(--primary); }
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 580px;
-      margin-bottom: 2rem;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-    }
-    .stat {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.2rem 1.6rem;
-      min-width: 140px;
-    }
-    .stat strong {
-      display: block;
-      font-size: 1.6rem;
-      color: var(--primary);
-    }
-    .stat span { font-size: 0.85rem; color: var(--text-muted); }
-    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .btn {
-      display: inline-block;
-      padding: 0.85rem 1.6rem;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #052e16;
-    }
-    .btn-primary:hover { background: var(--primary-dim); }
-    .btn-outline {
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:7rem 0 4rem;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(60% 50% at 20% 20%,rgba(52,211,153,.22),transparent 60%),
+             radial-gradient(50% 50% at 85% 75%,rgba(34,211,238,.18),transparent 60%),var(--bg)}
+.grid-bg{position:absolute;inset:0;z-index:-1;opacity:.35;
+  background-image:linear-gradient(var(--card-b) 1px,transparent 1px),linear-gradient(90deg,var(--card-b) 1px,transparent 1px);
+  background-size:48px 48px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.35);color:var(--green);font-size:.82rem;font-weight:600;margin-bottom:1.2rem}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}100%{box-shadow:0 0 0 10px rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2.2rem,5.4vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.1rem}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--muted);font-size:1.1rem;max-width:540px;margin-bottom:1.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:12px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;font-size:.95rem;font-family:inherit;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:var(--grad);color:#04241a;box-shadow:0 8px 30px -8px rgba(52,211,153,.6)}
+.btn-o{background:var(--card);border-color:var(--card-b);color:var(--text)}
+.btn-o:hover{border-color:var(--green)}
+.quick{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+.quick a{font-size:.82rem;padding:.4rem .85rem;border-radius:999px;background:var(--card);border:1px solid var(--card-b);color:var(--muted);text-decoration:none;transition:.2s}
+.quick a:hover{color:var(--green);border-color:var(--green)}
 
-    /* SECTIONS */
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 1.5rem;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-    }
-    .section-title span { color: var(--primary); }
-    .section-sub {
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-    }
+/* hero art */
+.art{position:relative;aspect-ratio:1;max-width:460px;margin-inline:auto;width:100%}
+.art svg{width:100%;height:100%;filter:drop-shadow(0 30px 60px rgba(34,211,238,.18))}
+.float{animation:float 6s ease-in-out infinite}
+.float.d2{animation-delay:-2s}.float.d3{animation-delay:-4s}
+@keyframes float{50%{transform:translateY(-12px)}}
+.spin{transform-origin:230px 230px;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-    /* CARDS */
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
-    .card:hover { border-color: var(--primary); }
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.6rem;
-      color: var(--cyan);
-    }
-    .card p, .card ul { color: var(--text-muted); font-size: 0.95rem; }
-    .card ul { padding-left: 1.1rem; margin-top: 0.5rem; }
-    .card li { margin-bottom: 0.3rem; }
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.stat{background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.2rem 1.3rem;backdrop-filter:blur(8px)}
+.stat strong{display:block;font-size:2rem;font-weight:800;line-height:1.1}
+.stat span{color:var(--muted);font-size:.85rem}
 
-    .badge {
-      display: inline-block;
-      background: rgba(34, 197, 94, 0.15);
-      color: var(--primary);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      margin-bottom: 0.7rem;
-    }
+/* SECTIONS */
+section.s{padding:6rem 0;position:relative}
+section.alt{background:linear-gradient(180deg,transparent,var(--bg2) 15%,var(--bg2) 85%,transparent)}
+.tag{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:.6rem}
+h2.title{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:.8rem}
+.sub{color:var(--muted);max-width:640px;margin-bottom:2.5rem;font-size:1.02rem}
+.grid{display:grid;gap:1.2rem}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.6rem;transition:transform .25s,border-color .25s,background .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(52,211,153,.5);background:rgba(255,255,255,.06)}
+.card h3{font-size:1.1rem;margin-bottom:.6rem}
+.card p,.card li{color:var(--muted);font-size:.95rem}
+.card ul{padding-left:1.1rem}
+.card li{margin-bottom:.3rem}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:1rem;background:rgba(52,211,153,.12)}
 
-    /* POINTS */
-    .point-list { list-style: none; }
-    .point-list li {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.1rem 1.3rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .point-list .icon {
-      font-size: 1.4rem;
-      margin-top: 0.1rem;
-    }
+/* definition */
+.callout{display:flex;gap:1.2rem;align-items:flex-start;background:linear-gradient(135deg,rgba(52,211,153,.1),rgba(34,211,238,.06));border:1px solid rgba(52,211,153,.3);border-radius:var(--radius);padding:1.5rem;margin-bottom:2rem}
+.callout .ico{flex:none;margin:0}
 
-    /* FORM */
-    .form-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-    }
-    .form-box a {
-      color: var(--cyan);
-      font-weight: 600;
-    }
+/* tabs (4 linhas) */
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.tab{padding:.6rem 1.1rem;border-radius:12px;border:1px solid var(--card-b);background:var(--card);color:var(--muted);font-weight:600;cursor:pointer;font-family:inherit;font-size:.92rem;transition:.2s}
+.tab:hover{color:var(--text)}
+.tab.on{color:#04241a;border-color:transparent}
+.panel{display:none;animation:fade .4s}
+.panel.on{display:grid}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.panel{grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.chip{padding:.4rem .85rem;border-radius:999px;font-size:.88rem;font-weight:500;background:rgba(255,255,255,.07);border:1px solid var(--card-b)}
+.panel h3{font-size:1.4rem;margin-bottom:.4rem}
+.panel .big{font-size:5rem;text-align:center;line-height:1}
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-    footer a { color: var(--primary); text-decoration: none; }
+/* toxic */
+.tox{display:flex;gap:1rem;align-items:flex-start}
+.tox .sym{flex:none;width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-weight:800;font-size:1.15rem;border:1px solid}
+.tox h3{margin-bottom:.15rem}
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0; right: 0;
-        background: var(--bg);
-        flex-direction: column;
-        padding: 1rem 1.5rem 1.5rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-links.open { display: flex; }
-      .menu-btn { display: block; }
-      .hero-stats { gap: 1rem; }
-      .stat { min-width: 120px; padding: 1rem; }
-    }
-  </style>
+/* chain */
+.chain{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:1.6rem}
+.chain span.n{padding:.55rem 1rem;border-radius:12px;background:var(--card);border:1px solid var(--card-b);font-size:.9rem;font-weight:500}
+.chain em{color:var(--red);font-style:normal}
+
+/* checklist interativo */
+.check{list-style:none}
+.check li{display:flex;gap:.8rem;align-items:center;padding:.8rem 1rem;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--card-b);margin-bottom:.6rem;cursor:pointer;transition:.2s;user-select:none;color:var(--text)}
+.check li:hover{border-color:var(--green)}
+.check .box{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--muted);display:grid;place-items:center;font-size:.8rem;color:transparent;transition:.2s}
+.check li.done{background:rgba(52,211,153,.08)}
+.check li.done .box{background:var(--green);border-color:var(--green);color:#04241a}
+.check li.done span{text-decoration:line-through;opacity:.6}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:1rem}
+.bar i{display:block;height:100%;width:0;background:var(--grad);transition:width .4s}
+
+/* pontos */
+.points{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.point{display:flex;gap:1rem;background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.3rem;transition:.25s}
+.point:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.point .ico{flex:none;margin:0;background:rgba(34,211,238,.12)}
+.point strong{display:block;margin-bottom:.2rem}
+.point small{color:var(--muted);display:block;margin-top:.35rem;font-size:.85rem}
+.warn{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:14px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);color:#fde68a;font-size:.9rem}
+
+/* mineração */
+.mine{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.cmp{padding:1.6rem;border-radius:var(--radius);border:1px solid var(--card-b);text-align:center}
+.cmp.bad{background:rgba(248,113,113,.07)}
+.cmp.good{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.4)}
+.cmp strong{display:block;font-size:2.4rem;font-weight:800}
+.cmp.bad strong{color:var(--red)}.cmp.good strong{color:var(--green)}
+.cmp span{color:var(--muted);font-size:.9rem}
+
+/* quiz */
+.quiz{max-width:720px}
+.q{margin-bottom:1.2rem}
+.q h4{margin-bottom:.6rem;font-size:1rem}
+.opts{display:grid;gap:.5rem}
+.opt{text-align:left;padding:.75rem 1rem;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--card-b);color:var(--text);font-family:inherit;font-size:.93rem;cursor:pointer;transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--cyan)}
+.opt.ok{background:rgba(52,211,153,.15);border-color:var(--green)}
+.opt.no{background:rgba(248,113,113,.12);border-color:var(--red)}
+.opt:disabled{cursor:default}
+#score{font-weight:700;color:var(--green);margin-top:.5rem}
+
+/* vídeo */
+.video{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--card-b);background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-fallback{display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;text-align:center;padding:2rem;aspect-ratio:16/9;border-radius:var(--radius);border:1px dashed var(--card-b);background:var(--card)}
+
+/* about */
+.team{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.member{display:flex;align-items:center;gap:.6rem;padding:.4rem .9rem .4rem .4rem;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--card-b);font-size:.9rem}
+.member i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#04241a;font-weight:800;font-size:.8rem}
+.refs a{color:var(--cyan);text-decoration:none;border-bottom:1px dashed rgba(34,211,238,.5)}
+.refs a:hover{color:var(--green)}
+.form-box{margin-top:1.5rem;background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.6rem}
+.form-box iframe{width:100%;height:640px;border:0;border-radius:12px;background:#fff;margin-top:1rem}
+
+/* footer */
+footer{border-top:1px solid var(--card-b);padding:2.5rem 1.25rem;text-align:center;color:var(--muted);font-size:.9rem}
+footer b{color:var(--green)}
+#top{position:fixed;right:1.2rem;bottom:1.2rem;width:46px;height:46px;border-radius:14px;border:1px solid var(--card-b);background:rgba(16,24,35,.9);color:var(--text);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:90}
+#top.show{opacity:1;pointer-events:auto}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* MOBILE */
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero p.lead{margin-inline:auto}
+  .btns,.quick{justify-content:center}
+  .art{max-width:300px;order:-1}
+  .panel{grid-template-columns:1fr}
+  .mine{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+  .menu-btn{display:block}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:1rem 1.25rem 1.3rem;background:rgba(11,17,24,.97);border-bottom:1px solid var(--card-b)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:.75rem 1rem}
+  .stats{grid-template-columns:1fr}
+  .stat{display:flex;align-items:center;gap:1rem}
+  .stat strong{font-size:1.6rem;min-width:110px}
+  section.s{padding:4rem 0}
+  .callout{flex-direction:column}
+}
+</style>
 </head>
 <body>
+<div id="progress"></div>
 
 <header>
   <nav>
-    <a href="#inicio" class="logo">♻️ E-Lixo <span>Consciente</span></a>
-    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    <ul class="nav-links">
+    <a href="#inicio" class="logo"><i>♻</i><span>E-Lixo <b>Consciente</b></span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#inicio">Início</a></li>
       <li><a href="#o-que-e">O que é</a></li>
       <li><a href="#impactos">Impactos</a></li>
@@ -270,236 +228,357 @@
   </nav>
 </header>
 
-<!-- PÁGINA 1: INÍCIO -->
+<main>
+<!-- ============ PÁGINA 1: INÍCIO ============ -->
 <section id="inicio" class="hero">
-  <h1>Seu eletrônico velho <span>não é lixo</span>.<br>É recurso.</h1>
-  <p>Site educativo sobre descarte correto de resíduos eletroeletrônicos (REEE). Conscientização + soluções práticas para Araguaína e região.</p>
-  
-  <div class="hero-stats">
-    <div class="stat">
-      <strong>\~2,4 mi</strong>
-      <span>toneladas/ano no Brasil</span>
-    </div>
-    <div class="stat">
-      <strong>&lt; 3%</strong>
-      <span>reciclados formalmente</span>
-    </div>
-    <div class="stat">
-      <strong>15+ ton</strong>
-      <span>já coletadas em Araguaína</span>
-    </div>
-  </div>
-
-  <div class="btn-group">
-    <a href="#descarte" class="btn btn-primary">Onde descartar</a>
-    <a href="#o-que-e" class="btn btn-outline">Entender o problema</a>
-  </div>
-</section>
-
-<!-- PÁGINA 2: O QUE É -->
-<section id="o-que-e">
-  <h2 class="section-title">O que é <span>Lixo Eletrônico</span>?</h2>
-  <p class="section-sub">Resíduos de Equipamentos Eletroeletrônicos (REEE) são todos os aparelhos elétricos ou eletrônicos que chegaram ao fim da vida útil.</p>
-
-  <div class="grid-4">
-    <div class="card">
-      <span class="badge">Linha Branca</span>
-      <h3>Grande porte</h3>
-      <ul>
-        <li>Geladeiras</li>
-        <li>Fogões</li>
-        <li>Máquinas de lavar</li>
-        <li>Ar-condicionado</li>
-      </ul>
-    </div>
-    <div class="card">
-      <span class="badge">Linha Marrom</span>
-      <h3>Áudio e vídeo</h3>
-      <ul>
-        <li>TVs e monitores</li>
-        <li>Aparelhos de som</li>
-        <li>DVDs / home theater</li>
-      </ul>
-    </div>
-    <div class="card">
-      <span class="badge">Linha Azul</span>
-      <h3>Eletroportáteis</h3>
-      <ul>
-        <li>Batedeiras</li>
-        <li>Liquidificadores</li>
-        <li>Secadores de cabelo</li>
-        <li>Ferros de passar</li>
-      </ul>
-    </div>
-    <div class="card">
-      <span class="badge">Linha Verde</span>
-      <h3>TI e telecom</h3>
-      <ul>
-        <li>Computadores e notebooks</li>
-        <li>Celulares e tablets</li>
-        <li>Cabos, carregadores</li>
-        <li>Baterias e pilhas</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PÁGINA 3: IMPACTOS -->
-<section id="impactos">
-  <h2 class="section-title">Impactos <span>Ambientais e na Saúde</span></h2>
-  <p class="section-sub">Quando descartados no lixo comum, os componentes tóxicos vazam para o solo e a água.</p>
-
-  <div class="grid-2">
-    <div class="card">
-      <h3>Substâncias tóxicas</h3>
-      <ul>
-        <li><strong>Chumbo</strong> – dano neurológico, especialmente em crianças</li>
-        <li><strong>Mercúrio</strong> – afeta sistema nervoso e rins</li>
-        <li><strong>Cádmio</strong> – câncer e problemas ósseos</li>
-        <li><strong>Lítio</strong> – risco de incêndio e contaminação</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Consequências</h3>
-      <ul>
-        <li>Contaminação do solo e lençóis freáticos</li>
-        <li>Entrada de metais pesados na cadeia alimentar</li>
-        <li>Riscos à saúde humana (neurológicos, respiratórios)</li>
-        <li>Perda de biodiversidade em áreas afetadas</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PÁGINA 4: DESCARTE -->
-<section id="descarte">
-  <h2 class="section-title">Guia Prático de <span>Descarte e Coleta</span></h2>
-  <p class="section-sub">Como preparar e onde levar em Araguaína.</p>
-
-  <div class="grid-2" style="margin-bottom: 2.5rem;">
-    <div class="card">
-      <h3>Como preparar o aparelho</h3>
-      <ul>
-        <li>Faça backup dos dados importantes</li>
-        <li>Apague dados pessoais (reset de fábrica)</li>
-        <li>Remova pilhas e baterias (descarte separado se possível)</li>
-        <li>Não desmonte o equipamento</li>
-        <li>Embale de forma segura se for grande</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Logística Reversa</h3>
-      <p>É a obrigação legal (PNRS – Lei 12.305/2010) de fabricantes, importadores e comerciantes de recolher e dar destinação correta aos produtos após o uso. O consumidor também tem responsabilidade: entregar nos pontos oficiais.</p>
-    </div>
-  </div>
-
-  <h3 style="margin-bottom: 1rem; color: var(--white);">Pontos de coleta em Araguaína</h3>
-  <ul class="point-list">
-    <li>
-      <span class="icon">📍</span>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <strong>MetalSul (ponto fixo principal)</strong><br>
-        Rua Aquarela Musical, 153 – Parque dos Sonhos Dourados<br>
-        <small style="color: var(--text-muted);">Recebe eletrônicos e eletrodomésticos de todos os portes. Gratuito.</small>
+        <div class="pill">Projeto escolar • Araguaína-TO</div>
+        <h1>Seu eletrônico velho <span class="grad">não é lixo.</span><br>É recurso.</h1>
+        <p class="lead">Aprenda a descartar corretamente os resíduos eletroeletrônicos (REEE), proteger o meio ambiente e descobrir onde levar seus aparelhos em Araguaína e região.</p>
+        <div class="btns">
+          <a href="#descarte" class="btn btn-p">📍 Onde descartar</a>
+          <a href="#o-que-e" class="btn btn-o">Entender o problema →</a>
+        </div>
+        <div class="quick" aria-label="Acesso rápido">
+          <a href="#o-que-e">♻ O que é e-lixo</a>
+          <a href="#impactos">☣ Impactos</a>
+          <a href="#circular">🔄 Economia circular</a>
+          <a href="#sobre">✉ Contato</a>
+        </div>
       </div>
-    </li>
-    <li>
-      <span class="icon">📍</span>
-      <div>
-        <strong>UNITPAC – Campus</strong><br>
-        Espaço entre blocos G e F<br>
-        <small style="color: var(--text-muted);">Itens de pequeno porte (notebooks, monitores, celulares, etc.).</small>
+
+      <!-- Banner visual: tecnologia + meio ambiente (SVG original, livre de direitos) -->
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a3b"/><stop offset="1" stop-color="#101823"/></linearGradient>
+          </defs>
+          <circle cx="230" cy="230" r="200" stroke="url(#g1)" stroke-opacity=".25" stroke-width="2" stroke-dasharray="4 10"/>
+          <g class="spin">
+            <circle cx="230" cy="30" r="9" fill="#34d399"/><circle cx="430" cy="230" r="7" fill="#22d3ee"/>
+            <circle cx="230" cy="430" r="9" fill="#60a5fa"/><circle cx="30" cy="230" r="7" fill="#fbbf24"/>
+          </g>
+          <!-- seta reciclagem -->
+          <g stroke="url(#g1)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".95">
+            <path d="M150 160 A105 105 0 0 1 300 128"/><path d="M300 128 l-6 -34 M300 128 l-34 6"/>
+            <path d="M342 210 A105 105 0 0 1 270 335"/><path d="M270 335 l36 -2 M270 335 l8 -33"/>
+            <path d="M178 335 A105 105 0 0 1 118 232"/><path d="M118 232 l-12 33 M118 232 l32 14"/>
+          </g>
+          <!-- smartphone -->
+          <g class="float">
+            <rect x="198" y="170" width="64" height="120" rx="12" fill="url(#g2)" stroke="#34d399" stroke-width="2"/>
+            <rect x="206" y="182" width="48" height="84" rx="5" fill="#0b1118"/>
+            <path d="M230 204c-10 0-18 8-18 18s8 18 18 18c0-6 4-10 10-10 0-14-4-26-10-26z" fill="#34d399" opacity=".9"/>
+            <circle cx="230" cy="278" r="4" fill="#34d399"/>
+          </g>
+          <!-- folha -->
+          <g class="float d2"><path d="M60 330c0-40 30-70 70-70 0 40-30 70-70 70z" fill="#34d399" opacity=".9"/><path d="M60 330l40-40" stroke="#0b1118" stroke-width="3" stroke-linecap="round"/></g>
+          <!-- chip -->
+          <g class="float d3">
+            <rect x="350" y="300" width="56" height="56" rx="8" fill="url(#g2)" stroke="#22d3ee" stroke-width="2"/>
+            <rect x="364" y="314" width="28" height="28" rx="4" fill="#22d3ee" opacity=".85"/>
+            <g stroke="#22d3ee" stroke-width="3" stroke-linecap="round"><path d="M362 300v-10M378 300v-10M394 300v-10M362 356v10M378 356v10M394 356v10M350 314h-10M350 330h-10M350 346h-10M406 314h10M406 330h10M406 346h10"/></g>
+          </g>
+          <!-- bateria -->
+          <g class="float d2"><rect x="340" y="90" width="64" height="32" rx="7" stroke="#fbbf24" stroke-width="2.5"/><rect x="404" y="100" width="6" height="12" rx="2" fill="#fbbf24"/><rect x="346" y="96" width="30" height="20" rx="3" fill="#fbbf24" opacity=".85"/></g>
+        </svg>
       </div>
-    </li>
-    <li>
-      <span class="icon">📍</span>
-      <div>
-        <strong>Campanhas e mutirões</strong><br>
-        Via Lago, Parque Cimba, Centro de Convenções e escolas<br>
-        <small style="color: var(--text-muted);">Acompanhe a Prefeitura e ABREE. Já foram coletadas mais de 15 toneladas em ações recentes.</small>
-      </div>
-    </li>
-    <li>
-      <span class="icon">🔋</span>
-      <div>
-        <strong>Pilhas e baterias</strong><br>
-        Vários pontos (Atacadão, Secretaria da Fazenda, FACIT, Senai, etc.)<br>
-        <small style="color: var(--text-muted);">Consulte o localizador da Green Eletron ou da Prefeitura.</small>
-      </div>
-    </li>
-  </ul>
-  <p style="margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-muted);">
-    Fontes: Prefeitura de Araguaína, ABREE e Green Eletron. Sempre confirme funcionamento antes de ir.
-  </p>
+    </div>
+
+    <!-- Dados de impacto -->
+    <div class="stats">
+      <div class="stat rv"><strong class="grad"><span class="count" data-to="2.4" data-dec="1">0</span> mi</strong><span>toneladas de e-lixo por ano no Brasil</span></div>
+      <div class="stat rv"><strong class="grad">&lt; <span class="count" data-to="3">0</span>%</strong><span>reciclado formalmente no país</span></div>
+      <div class="stat rv"><strong class="grad"><span class="count" data-to="15">0</span>+ ton</strong><span>já coletadas em Araguaína em ações recentes</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- PÁGINA 5: ECONOMIA CIRCULAR -->
-<section id="circular">
-  <h2 class="section-title">Sustentabilidade e <span>Economia Circular</span></h2>
-  <p class="section-sub">Reciclar é importante, mas não é a única solução.</p>
+<!-- ============ PÁGINA 2: O QUE É ============ -->
+<section id="o-que-e" class="s alt">
+  <div class="wrap">
+    <div class="tag rv">Página 2</div>
+    <h2 class="title rv">O que é <span class="grad">Lixo Eletrônico</span>?</h2>
+    <p class="sub rv">Os cientistas e a lei chamam de <strong>REEE</strong>. Na prática, é qualquer aparelho que usa energia elétrica e chegou ao fim da vida útil.</p>
 
-  <div class="grid-2">
-    <div class="card">
-      <h3>Além da reciclagem</h3>
-      <ul>
-        <li><strong>Manutenção e conserto</strong> – prolongue a vida útil</li>
-        <li><strong>Doação</strong> – se ainda funciona</li>
-        <li><strong>Venda de usados</strong> – mercado de segunda mão</li>
-        <li><strong>Compra consciente</strong> – escolha produtos duráveis e reparáveis</li>
-      </ul>
+    <div class="callout rv">
+      <div class="ico">💡</div>
+      <div>
+        <h3 style="margin-bottom:.3rem">Definição: Resíduos de Equipamentos Eletroeletrônicos (REEE)</h3>
+        <p style="color:var(--muted)">São todos os aparelhos que funcionam com corrente elétrica ou pilhas/baterias e que foram descartados por quebrar, ficar obsoletos ou não terem mais uso. Eles misturam materiais valiosos (cobre, ouro, prata) e substâncias perigosas (chumbo, mercúrio), por isso <strong>nunca devem ir para o lixo comum</strong>.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Mineração Urbana</h3>
-      <p>Recuperação de metais preciosos (ouro, prata, cobre, terras raras) das placas eletrônicas. 1 grama de ouro pode sair de \~40 celulares reciclados, em vez de 1 tonelada de minério. É mais eficiente e menos destrutivo que a mineração tradicional.</p>
+
+    <h3 class="rv" style="margin-bottom:1rem">As 4 Linhas de classificação</h3>
+    <div class="tabs rv" role="tablist" id="tabs">
+      <button class="tab on" data-i="0" style="--c:#e5e7eb">⚪ Linha Branca</button>
+      <button class="tab" data-i="1" style="--c:#d6a36b">🟤 Linha Marrom</button>
+      <button class="tab" data-i="2" style="--c:#60a5fa">🔵 Linha Azul</button>
+      <button class="tab" data-i="3" style="--c:#34d399">🟢 Linha Verde</button>
+    </div>
+
+    <div class="panel on rv" data-i="0">
+      <div><h3>Linha Branca</h3><p style="color:var(--muted)">Eletrodomésticos de grande porte, normalmente usados na cozinha e na lavanderia.</p>
+        <div class="chips"><span class="chip">Geladeiras</span><span class="chip">Fogões</span><span class="chip">Máquinas de lavar</span><span class="chip">Ar-condicionado</span></div></div>
+      <div class="big">🧊</div>
+    </div>
+    <div class="panel rv" data-i="1">
+      <div><h3>Linha Marrom</h3><p style="color:var(--muted)">Equipamentos de áudio e vídeo, voltados ao entretenimento.</p>
+        <div class="chips"><span class="chip">Monitores</span><span class="chip">Televisores</span><span class="chip">Aparelhos de som</span><span class="chip">DVD / Home theater</span></div></div>
+      <div class="big">📺</div>
+    </div>
+    <div class="panel rv" data-i="2">
+      <div><h3>Linha Azul</h3><p style="color:var(--muted)">Eletroportáteis, pequenos aparelhos do dia a dia da casa.</p>
+        <div class="chips"><span class="chip">Batedeiras</span><span class="chip">Liquidificadores</span><span class="chip">Secadores de cabelo</span><span class="chip">Ferros de passar</span></div></div>
+      <div class="big">🧁</div>
+    </div>
+    <div class="panel rv" data-i="3">
+      <div><h3>Linha Verde</h3><p style="color:var(--muted)">Tecnologia da informação e telecomunicações. São os que mais trocamos!</p>
+        <div class="chips"><span class="chip">Computadores</span><span class="chip">Celulares</span><span class="chip">Tablets</span><span class="chip">Cabos</span><span class="chip">Baterias</span></div></div>
+      <div class="big">📱</div>
     </div>
   </div>
 </section>
 
-<!-- PÁGINA 6: SOBRE -->
-<section id="sobre">
-  <h2 class="section-title">Sobre Nós e <span>Contato</span></h2>
-  
-  <div class="grid-2" style="margin-bottom: 2rem;">
-    <div class="card">
-      <h3>Apresentação da equipe</h3>
-      <p>Trabalho escolar desenvolvido pelo 3º ano C, sala 33.03, do Centro de Ensino Médio Cabo Aparício Araújo Paz, com o objetivo de conscientizar a comunidade escolar e local sobre o descarte correto de resíduos eletroeletrônicos.</p>
-      <p style="margin-top: 0.8rem; color: var(--text-muted); font-size: 0.9rem;">
-        <strong>Integrantes:</strong> Grazielly Silva Alves, Dilane Maria Alves, Maria Eduarda Lopes e Ana Júlia da Silva.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Referências principais</h3>
-      <ul>
-        <li>Política Nacional de Resíduos Sólidos (Lei 12.305/2010)</li>
-        <li>ABREE – Associação Brasileira de Reciclagem de Eletroeletrônicos</li>
-        <li>Green Eletron</li>
-        <li>Prefeitura de Araguaína – Secretaria de Meio Ambiente</li>
-        <li>Global E-waste Monitor</li>
-      </ul>
-    </div>
-  </div>
+<!-- ============ PÁGINA 3: IMPACTOS ============ -->
+<section id="impactos" class="s">
+  <div class="wrap">
+    <div class="tag rv">Página 3</div>
+    <h2 class="title rv">Impactos <span class="grad">Ambientais e na Saúde</span></h2>
+    <p class="sub rv">Quando vai para o lixo comum, o aparelho se quebra e seus componentes tóxicos escapam para o ambiente.</p>
 
-  <div class="form-box">
-    <h3 style="margin-bottom: 0.8rem;">Tem dúvida ou conhece outro ponto de coleta?</h3>
-    <p style="color: var(--text-muted); margin-bottom: 1.2rem;">Envie sua dúvida, sugestão ou indicação de ponto de coleta pelo formulário da equipe.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSceQ1DutxTHGeGLDedHM66_1ShtRDHCFK9MbJEmPCiJK86THQ/viewform?usp=preview" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-      Abrir formulário
-    </a>
+    <h3 class="rv" style="margin-bottom:1rem">☣ Substâncias tóxicas</h3>
+    <div class="grid g2">
+      <div class="card tox rv"><div class="sym" style="color:#a5b4fc;border-color:#a5b4fc55;background:#a5b4fc15">Pb</div><div><h3>Chumbo</h3><p>Presente em placas e telas antigas. Causa danos neurológicos, principalmente em crianças.</p></div></div>
+      <div class="card tox rv"><div class="sym" style="color:#cbd5e1;border-color:#cbd5e155;background:#cbd5e115">Hg</div><div><h3>Mercúrio</h3><p>Usado em lâmpadas e telas. Ataca o sistema nervoso e os rins.</p></div></div>
+      <div class="card tox rv"><div class="sym" style="color:#fbbf24;border-color:#fbbf2455;background:#fbbf2415">Cd</div><div><h3>Cádmio</h3><p>Encontrado em baterias e pilhas. Associado a câncer e problemas ósseos.</p></div></div>
+      <div class="card tox rv"><div class="sym" style="color:#34d399;border-color:#34d39955;background:#34d39915">Li</div><div><h3>Lítio</h3><p>Das baterias recarregáveis. Risco de incêndio, explosão e contaminação.</p></div></div>
+    </div>
+
+    <h3 class="rv" style="margin:2.5rem 0 .4rem">⛓ Consequências: o caminho da contaminação</h3>
+    <div class="chain rv">
+      <span class="n">🗑 Lixo comum</span><em>→</em>
+      <span class="n">🌱 Contamina o solo</span><em>→</em>
+      <span class="n">💧 Atinge lençóis freáticos</span><em>→</em>
+      <span class="n">🥬 Entra na cadeia alimentar</span><em>→</em>
+      <span class="n">🧍 Prejudica a saúde humana</span>
+    </div>
+    <div class="grid g3" style="margin-top:1.5rem">
+      <div class="card rv"><div class="ico">🌍</div><h3>Solo e água</h3><p>Metais pesados se acumulam e não se degradam, poluindo por décadas.</p></div>
+      <div class="card rv"><div class="ico">🫁</div><h3>Saúde humana</h3><p>Problemas neurológicos, respiratórios, renais e risco de câncer.</p></div>
+      <div class="card rv"><div class="ico">🦋</div><h3>Biodiversidade</h3><p>Animais e plantas contaminados sofrem envenenamento e perdem espaço.</p></div>
+    </div>
   </div>
 </section>
+
+<!-- ============ PÁGINA 4: DESCARTE ============ -->
+<section id="descarte" class="s alt">
+  <div class="wrap">
+    <div class="tag rv">Página 4 • Utilidade pública</div>
+    <h2 class="title rv">Guia Prático de <span class="grad">Descarte e Coleta</span></h2>
+    <p class="sub rv">Prepare seu aparelho com segurança e descubra onde entregar em Araguaína.</p>
+
+    <div class="grid g2" style="align-items:start">
+      <div class="card rv">
+        <h3>✅ Como preparar o aparelho <small style="color:var(--muted);font-weight:400">(clique para marcar)</small></h3>
+        <div class="bar" style="margin-top:.8rem"><i id="checkBar"></i></div>
+        <ul class="check" id="checklist">
+          <li><span class="box">✓</span><span>Faça backup dos dados importantes</span></li>
+          <li><span class="box">✓</span><span>Apague seus dados pessoais (reset de fábrica)</span></li>
+          <li><span class="box">✓</span><span>Remova pilhas e baterias (descarte separado)</span></li>
+          <li><span class="box">✓</span><span>Não desmonte o equipamento</span></li>
+          <li><span class="box">✓</span><span>Embale com segurança se for grande</span></li>
+        </ul>
+        <p id="checkMsg" style="margin-top:.5rem;color:var(--green);font-weight:600"></p>
+      </div>
+      <div class="card rv">
+        <h3>🔁 Logística Reversa</h3>
+        <p>É a obrigação prevista na <strong>Política Nacional de Resíduos Sólidos (Lei 12.305/2010)</strong>: fabricantes, importadores, distribuidores e comerciantes devem recolher os produtos após o uso e dar a eles um destino ambientalmente correto.</p>
+        <ul style="margin-top:.9rem">
+          <li><strong>Fabricantes e comerciantes:</strong> estruturar a coleta e a reciclagem.</li>
+          <li><strong>Consumidores:</strong> separar e entregar nos pontos oficiais, sem misturar com o lixo comum.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="rv" style="margin:2.5rem 0 1rem">📍 Pontos de coleta em Araguaína</h3>
+    <div class="points">
+      <div class="point rv"><div class="ico">🏭</div><div><strong>MetalSul <small style="display:inline;color:var(--green)">• ponto fixo principal</small></strong>Rua Aquarela Musical, 153 – Parque dos Sonhos Dourados<small>Recebe eletrônicos e eletrodomésticos de todos os portes. Gratuito.</small></div></div>
+      <div class="point rv"><div class="ico">🎓</div><div><strong>UNITPAC – Campus</strong>Espaço entre os blocos G e F<small>Itens de pequeno porte: notebooks, monitores, celulares etc.</small></div></div>
+      <div class="point rv"><div class="ico">📣</div><div><strong>Campanhas e mutirões</strong>Via Lago, Parque Cimba, Centro de Convenções e escolas<small>Acompanhe a Prefeitura e a ABREE. Mais de 15 toneladas já foram coletadas.</small></div></div>
+      <div class="point rv"><div class="ico">🔋</div><div><strong>Pilhas e baterias</strong>Atacadão, Secretaria da Fazenda, FACIT, Senai e outros<small>Consulte o localizador da Green Eletron ou da Prefeitura.</small></div></div>
+    </div>
+    <div class="warn rv">⚠ Fontes: Prefeitura de Araguaína, ABREE e Green Eletron. Horários e regras podem mudar, então confirme o funcionamento antes de ir.</div>
+
+    <!-- vídeo educativo -->
+    <h3 class="rv" style="margin:3rem 0 1rem">🎬 Vídeo educativo</h3>
+    <div class="rv" id="videoBox"></div>
+  </div>
+</section>
+
+<!-- ============ PÁGINA 5: ECONOMIA CIRCULAR ============ -->
+<section id="circular" class="s">
+  <div class="wrap">
+    <div class="tag rv">Página 5</div>
+    <h2 class="title rv">Sustentabilidade e <span class="grad">Economia Circular</span></h2>
+    <p class="sub rv">Reciclar é importante, mas o melhor lixo é aquele que nem chega a existir.</p>
+
+    <h3 class="rv" style="margin-bottom:1rem">Além da reciclagem</h3>
+    <div class="grid g4">
+      <div class="card rv"><div class="ico">🔧</div><h3>Manutenção e conserto</h3><p>Trocar tela, bateria ou peça costuma custar bem menos do que comprar um novo.</p></div>
+      <div class="card rv"><div class="ico">🎁</div><h3>Doação</h3><p>Se ainda funciona, pode ajudar escolas, ONGs e famílias.</p></div>
+      <div class="card rv"><div class="ico">🏷</div><h3>Venda de usados</h3><p>O mercado de segunda mão dá uma nova vida ao aparelho e rende dinheiro.</p></div>
+      <div class="card rv"><div class="ico">🛒</div><h3>Compra consciente</h3><p>Escolha produtos duráveis, reparáveis e só compre o que realmente precisa.</p></div>
+    </div>
+
+    <h3 class="rv" style="margin:3rem 0 .5rem">⛏ Mineração Urbana</h3>
+    <p class="sub rv" style="margin-bottom:1.5rem">É a recuperação de metais preciosos (ouro, prata, cobre) das placas eletrônicas na reciclagem. As placas de circuito têm concentração de metais maior que a de muitas minas.</p>
+    <div class="mine">
+      <div class="cmp bad rv"><strong>~1 tonelada</strong><span>de minério na mineração tradicional para obter 1 g de ouro</span></div>
+      <div class="cmp good rv"><strong>~40 celulares</strong><span>reciclados podem fornecer a mesma quantidade (1 g de ouro)</span></div>
+    </div>
+
+    <h3 class="rv" style="margin:3rem 0 1rem">🧠 Teste seus conhecimentos</h3>
+    <div class="quiz rv" id="quiz"></div>
+  </div>
+</section>
+
+<!-- ============ PÁGINA 6: SOBRE ============ -->
+<section id="sobre" class="s alt">
+  <div class="wrap">
+    <div class="tag rv">Página 6</div>
+    <h2 class="title rv">Sobre Nós e <span class="grad">Contato</span></h2>
+
+    <div class="grid g2" style="margin-top:1.5rem">
+      <div class="card rv">
+        <h3>👩‍🎓 Apresentação da equipe</h3>
+        <p>Trabalho escolar desenvolvido pelo <strong>3º ano C, sala 33.03</strong>, do <strong>Centro de Ensino Médio Cabo Aparício Araújo Paz</strong>, com o objetivo de conscientizar a comunidade escolar e local sobre o descarte correto de resíduos eletroeletrônicos.</p>
+        <div class="team">
+          <span class="member"><i>G</i>Grazielly Silva Alves</span>
+          <span class="member"><i>D</i>Dilane Maria Alves</span>
+          <span class="member"><i>M</i>Maria Eduarda Lopes</span>
+          <span class="member"><i>A</i>Ana Júlia da Silva</span>
+        </div>
+      </div>
+      <div class="card refs rv">
+        <h3>📚 Referências bibliográficas</h3>
+        <ul>
+          <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm" target="_blank" rel="noopener">Política Nacional de Resíduos Sólidos (Lei 12.305/2010)</a></li>
+          <li><a href="https://abree.org.br" target="_blank" rel="noopener">ABREE – Associação Brasileira de Reciclagem de Eletroeletrônicos</a></li>
+          <li><a href="https://www.greeneletron.org.br" target="_blank" rel="noopener">Green Eletron</a></li>
+          <li><a href="https://ewastemonitor.info" target="_blank" rel="noopener">Global E-waste Monitor</a></li>
+          <li><a href="https://araguaina.to.gov.br" target="_blank" rel="noopener">Prefeitura de Araguaína – Meio Ambiente</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-box rv">
+      <h3>💬 Tem dúvida ou conhece outro ponto de coleta?</h3>
+      <p style="color:var(--muted)">Envie sua dúvida ou sugira um novo ponto de coleta pelo formulário abaixo.</p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSceQ1DutxTHGeGLDedHM66_1ShtRDHCFK9MbJEmPCiJK86THQ/viewform?embedded=true" title="Formulário de dúvidas e sugestões" loading="lazy">Carregando…</iframe>
+      <p style="margin-top:.8rem;font-size:.88rem;color:var(--muted)">Não carregou? <a href="https://docs.google.com/forms/d/e/1FAIpQLSceQ1DutxTHGeGLDedHM66_1ShtRDHCFK9MbJEmPCiJK86THQ/viewform" target="_blank" rel="noopener" style="color:var(--cyan)">Abra o formulário em outra aba</a>.</p>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
-  <p>Projeto escolar • Araguaína - TO • 2026</p>
-  <p style="margin-top: 0.5rem;">Conteúdo original. Fontes oficiais citadas. Site hospedado no GitHub Pages.</p>
+  <p><b>♻ E-Lixo Consciente</b> • Projeto escolar • Araguaína-TO • 2026</p>
+  <p style="margin-top:.4rem">Conteúdo original, com fontes oficiais citadas. Ilustrações em SVG criadas para este projeto.</p>
 </footer>
+<button id="top" aria-label="Voltar ao topo">↑</button>
 
 <script>
-  // Fecha menu mobile ao clicar em link
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.remove('open');
-    });
+/* ===== CONFIG: cole aqui o ID de um vídeo curto do YouTube (ex.: "AbC123xyz_0") ===== */
+const YOUTUBE_ID = "";
+
+/* menu mobile */
+const links = document.getElementById('navLinks');
+document.getElementById('menuBtn').onclick = () => links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a => a.onclick = () => links.classList.remove('open'));
+
+/* barra de progresso + botão topo */
+const bar = document.getElementById('progress'), topBtn = document.getElementById('top');
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  topBtn.classList.toggle('show', h.scrollTop > 600);
+}, {passive:true});
+topBtn.onclick = () => scrollTo({top:0, behavior:'smooth'});
+
+/* link ativo no menu */
+const secs = [...document.querySelectorAll('main section[id]')];
+const navA = [...links.querySelectorAll('a')];
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+}), {rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s => spy.observe(s));
+
+/* revelar ao rolar + contadores */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in'); io.unobserve(e.target);
+  e.target.querySelectorAll('.count').forEach(count);
+}), {threshold:.15});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+function count(el){
+  const to = +el.dataset.to, dec = +(el.dataset.dec || 0), t0 = performance.now(), d = 1400;
+  (function step(t){
+    const p = Math.min((t - t0) / d, 1), v = to * (1 - Math.pow(1 - p, 3));
+    el.textContent = v.toFixed(dec).replace('.', ',');
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+
+/* abas das 4 linhas */
+const tabs = [...document.querySelectorAll('.tab')], panels = [...document.querySelectorAll('.panel')];
+function setTab(i){
+  tabs.forEach((t,k) => { t.classList.toggle('on', k == i); t.style.background = k == i ? t.style.getPropertyValue('--c') : ''; });
+  panels.forEach((p,k) => p.classList.toggle('on', k == i));
+}
+tabs.forEach((t,i) => t.onclick = () => setTab(i)); setTab(0);
+
+/* checklist interativo */
+const items = [...document.querySelectorAll('#checklist li')];
+items.forEach(li => li.onclick = () => {
+  li.classList.toggle('done');
+  const n = items.filter(x => x.classList.contains('done')).length;
+  document.getElementById('checkBar').style.width = (n / items.length * 100) + '%';
+  document.getElementById('checkMsg').textContent = n == items.length ? '🎉 Pronto! Seu aparelho está preparado para o descarte.' : '';
+});
+
+/* vídeo */
+const vb = document.getElementById('videoBox');
+vb.innerHTML = YOUTUBE_ID
+  ? `<div class="video"><iframe src="https://www.youtube.com/embed/${YOUTUBE_ID}" title="Vídeo educativo sobre lixo eletrônico" allowfullscreen loading="lazy"></iframe></div>`
+  : `<div class="video-fallback"><div style="font-size:2.5rem">▶️</div><p style="color:var(--muted)">Assista a vídeos educativos curtos sobre descarte de lixo eletrônico no YouTube.</p><a class="btn btn-p" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=descarte+correto+lixo+eletr%C3%B4nico">Buscar vídeos no YouTube</a></div>`;
+
+/* quiz */
+const Q = [
+ {q:'Qual linha inclui celulares, computadores e tablets?', o:['Linha Branca','Linha Marrom','Linha Azul','Linha Verde'], a:3},
+ {q:'Qual lei trata da logística reversa no Brasil?', o:['Lei 12.305/2010 (PNRS)','Lei Maria da Penha','Código de Trânsito','Lei Rouanet'], a:0},
+ {q:'Quantos celulares reciclados rendem cerca de 1 g de ouro?', o:['~4','~40','~400','~4.000'], a:1}
+];
+const quiz = document.getElementById('quiz'); let pts = 0, ans = 0;
+Q.forEach((it,qi) => {
+  const d = document.createElement('div'); d.className = 'q';
+  d.innerHTML = `<h4>${qi+1}. ${it.q}</h4><div class="opts"></div>`;
+  it.o.forEach((t,oi) => {
+    const b = document.createElement('button'); b.className = 'opt'; b.textContent = t;
+    b.onclick = () => {
+      d.querySelectorAll('.opt').forEach(x => x.disabled = true);
+      if (oi == it.a){ b.classList.add('ok'); pts++; } else { b.classList.add('no'); d.querySelectorAll('.opt')[it.a].classList.add('ok'); }
+      if (++ans == Q.length) document.getElementById('score').textContent = `Você acertou ${pts} de ${Q.length}! ` + (pts == Q.length ? '🌱 Parabéns, você é um(a) consciente!' : 'Releia as seções e tente de novo.');
+    };
+    d.querySelector('.opts').appendChild(b);
   });
+  quiz.appendChild(d);
+});
+quiz.insertAdjacentHTML('beforeend','<p id="score"></p>');
 </script>
 </body>
 </html>
