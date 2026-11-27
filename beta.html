@@ -177,6 +177,18 @@ h2.title{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.0
 .form-box{margin-top:1.5rem;background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.6rem}
 .form-box iframe{width:100%;height:640px;border:0;border-radius:12px;background:#fff;margin-top:1rem}
 
+/* mapa do site */
+.sm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.5rem}
+.sm-col{background:var(--card);border:1px solid var(--card-b);border-radius:var(--radius);padding:1.4rem}
+.sm-col h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);margin-bottom:.8rem}
+.sm-col ul{list-style:none}
+.sm-col a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.55rem .7rem;border-radius:10px;text-decoration:none;color:var(--text);font-size:.92rem;transition:.2s}
+.sm-col a:hover{background:rgba(52,211,153,.1);color:var(--green)}
+.sm-col a small{display:block;color:var(--muted);font-size:.75rem;overflow-wrap:anywhere}
+.sm-col a.cur{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.4)}
+.here{flex:none;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;background:var(--green);color:#04241a;padding:.2rem .55rem;border-radius:999px}
+@media(max-width:860px){.sm-grid{grid-template-columns:1fr}}
+
 /* footer */
 footer{border-top:1px solid var(--card-b);padding:2.5rem 1.25rem;text-align:center;color:var(--muted);font-size:.9rem}
 footer b{color:var(--green)}
@@ -224,6 +236,7 @@ footer b{color:var(--green)}
       <li><a href="#descarte">Descarte</a></li>
       <li><a href="#circular">Economia Circular</a></li>
       <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#mapa">Mapa do site</a></li>
     </ul>
   </nav>
 </header>
@@ -484,10 +497,49 @@ footer b{color:var(--green)}
     </div>
   </div>
 </section>
+
+<!-- ============ MAPA DO SITE ============ -->
+<section id="mapa" class="s">
+  <div class="wrap">
+    <div class="tag rv">Mapa do site</div>
+    <h2 class="title rv">Encontre tudo em <span class="grad">um só lugar</span></h2>
+    <div class="sm-grid">
+      <nav class="sm-col rv" aria-label="Páginas deste site">
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="#inicio">1 · Início</a></li>
+          <li><a href="#o-que-e">2 · O que é lixo eletrônico</a></li>
+          <li><a href="#impactos">3 · Impactos ambientais e na saúde</a></li>
+          <li><a href="#descarte">4 · Guia de descarte e coleta</a></li>
+          <li><a href="#circular">5 · Economia circular</a></li>
+          <li><a href="#sobre">6 · Sobre nós e contato</a></li>
+        </ul>
+      </nav>
+      <nav class="sm-col rv" aria-label="Versões do projeto">
+        <h3>Versões do projeto</h3>
+        <ul>
+          <li><a class="cur" href="https://klesyolira.github.io/Grazy/beta.html" aria-current="page"><span>🧪 Versão Beta<small>klesyolira.github.io/Grazy/beta.html</small></span><span class="here">Você está aqui</span></a></li>
+          <li><a href="https://klesyolira.github.io/Grazy/grazy.html"><span>✅ Versão Oficial<small>klesyolira.github.io/Grazy/grazy.html</small></span></a></li>
+        </ul>
+      </nav>
+      <nav class="sm-col rv" aria-label="Recursos">
+        <h3>Recursos</h3>
+        <ul>
+          <li><a href="#descarte">📍 Pontos de coleta em Araguaína</a></li>
+          <li><a href="https://www.greeneletron.org.br" target="_blank" rel="noopener">🔎 Green Eletron ↗</a></li>
+          <li><a href="https://abree.org.br" target="_blank" rel="noopener">🔎 ABREE ↗</a></li>
+          <li><a href="#sobre">✉ Formulário de contato</a></li>
+          <li><a href="#sobre">📚 Referências</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
   <p><b>♻ E-Lixo Consciente</b> • Projeto escolar • Araguaína-TO • 2026</p>
+  <p style="margin-top:.4rem"><a href="#mapa" style="color:var(--green)">Mapa do site</a> • <a href="https://klesyolira.github.io/Grazy/beta.html" style="color:var(--green)">Beta</a> • <a href="https://klesyolira.github.io/Grazy/grazy.html" style="color:var(--green)">Oficial</a></p>
   <p style="margin-top:.4rem">Conteúdo original, com fontes oficiais citadas. Ilustrações em SVG criadas para este projeto.</p>
 </footer>
 <button id="top" aria-label="Voltar ao topo">↑</button>
